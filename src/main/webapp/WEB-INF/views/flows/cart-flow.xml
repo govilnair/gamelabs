@@ -1,0 +1,31 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<var name="cart" class="gamelabs.myController" />
+
+
+
+<view-state id="pg1" view="/WEB-INF/views/flows/page1.jsp">
+		<transition to="pg2" on="goToPage2" />
+		<transition to="productsPage" on="goToProducts" />
+	</view-state>
+	
+	<view-state id="productsPage" view="externalRedirect:/product" />
+
+	<view-state id="pg2" view="/WEB-INF/views/flows/page2.jsp">
+		<transition to="pg3" on="goToPage3" />
+		<transition to="pg1" on="goToPage1" />
+	</view-state>
+	
+	<view-state id="pg3" view="/WEB-INF/views/flows/page3.jsp">
+		<transition to="pg4" on="goToPage4" />
+		<transition to="pg2" on="goToPage2" />
+	</view-state>
+	
+	<end-state id="pg4" view="/WEB-INF/views/flows/page4.jsp"></end-state>
+
+
+</flow>
