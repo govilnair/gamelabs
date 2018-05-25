@@ -5,6 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<script type="text/javascript"></script>
+
+angular.module("myApp",[]).controller("myCtrl",function( $scope , $http)
+{
+$scope.data = [];
+$scope.sum = 0;
+$ http.get("deleteFromCart")
+.then(function(response){
+console.log(response.data);
+
+});
+});
+
 </head>
 <body>
 

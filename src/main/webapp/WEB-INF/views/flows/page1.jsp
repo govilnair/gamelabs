@@ -22,7 +22,7 @@
 	angular.module("myApp",[]).controller("myCtrl",function( $scope , $http ){
 		
 		
-		$scope.data = [];
+$scope.data = [];
 		
 		$http.get("fetchCartItems")
 		    .then(function(response) {
@@ -30,6 +30,29 @@
 		    
 		        $scope.data = response.data;
 		    });
+		
+		$scope.RemoveItem = function( arg ){
+			
+			$http.get("removeCartItem?id="+arg)
+		    .then(function(response) {
+		        console.log(response.data);
+		    
+		        if( response.data.msg == "done" ){
+		       
+		        	//
+		        	$http.get("fetchCartItems")
+				    .then(function(response) {
+				        console.log(response.data);
+				    
+				        $scope.data = response.data;
+				    });
+		        	//
+		        	
+		        }
+		        	
+		        
+		    });
+		}
 		
 	});
 
